@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import config from "../config/config";
 import { Client, Account, ID } from "appwrite";
 
@@ -67,7 +68,8 @@ export class AuthService {
                 return;
             }
         } catch (error) {
-            throw error;
+            console.log("Appwrite service :: createAccount :: error", error);
+            return false;
         }
     }
 
@@ -75,7 +77,8 @@ export class AuthService {
         try {
             return await this.account.createEmailSession(email, password);
         } catch (error) {
-            throw error;
+            console.log("Appwrite service :: login :: error", error);
+            return false;
         }
     }
 
@@ -85,7 +88,8 @@ export class AuthService {
         try {
             return await this.account.get();
         } catch (error) {
-            throw error;
+            console.log("Appwrite service :: getCurrentUser :: error", error);
+            return false;
         }
 
         return null;
@@ -96,7 +100,8 @@ export class AuthService {
         try {
             await this.account.deleteSessions();
         } catch (error) {
-            throw error;
+            console.log("Appwrite service :: logout :: error", error);
+            return false;
         }
     }
 }
