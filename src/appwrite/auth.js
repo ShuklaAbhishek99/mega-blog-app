@@ -40,7 +40,7 @@ export class AuthService {
     // contructor, when the AuthService is called then only the account is created
     // we don't do it in the class directly but in constructor, only avoid wastage of resources
     constructor() {
-        this.client()
+        this.client
             .setEndpoint(config.appwriteUrl)
             .setProject(config.appwriteProjectId);
 
@@ -92,7 +92,7 @@ export class AuthService {
             return false;
         }
 
-        return null;
+        // return null;
     }
 
     // logout
