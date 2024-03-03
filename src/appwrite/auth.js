@@ -48,7 +48,7 @@ export class AuthService {
     }
 
     // we don't want to step up further without account creation so aysnc await
-    async createAcount({ email, password, name }) {
+    async createAccount({ email, password, name }) {
         try {
             const userAccount = await this.account.create(
                 ID.unique(),
